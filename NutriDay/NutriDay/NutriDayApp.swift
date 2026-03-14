@@ -14,7 +14,12 @@ struct NutriDayApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(
+                vm: DayViewModel(
+                    persistence: DayPersistenceModel(
+                        context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+                    )
+            )
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

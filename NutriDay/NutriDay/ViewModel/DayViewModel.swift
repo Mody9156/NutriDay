@@ -1,9 +1,7 @@
-//
 //  DayViewModel.swift
 //  NutriDay
 //
 //  Created by Modibo on 13/03/2026.
-//
 
 import Foundation
 import Observation
@@ -68,6 +66,11 @@ class DayViewModel {
         calculateStreak()
     }
 
+    // MARK: - Stats (pour StatsView)
+    func fetchMealsPublic(for date: Date) -> [MealModel] {
+        persistence.fetchMeals(for: date)
+    }
+
     // MARK: - Streak
     func calculateStreak() {
         var count = 0
@@ -85,6 +88,7 @@ class DayViewModel {
         streak = count
     }
 
+    // MARK: - Navigation
     func changeDay(by value: Int) {
         selectedDate = Calendar.current.date(
             byAdding: .day, value: value, to: selectedDate
