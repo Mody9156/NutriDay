@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-internal import CoreData
+ import CoreData
 
 // MARK: - Date Navigation
 struct DateNavigationView: View {

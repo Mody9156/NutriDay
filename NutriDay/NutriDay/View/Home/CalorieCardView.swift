@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-internal import CoreData
+ import CoreData
 
 // MARK: - Calorie Card
 struct CalorieCardView: View {

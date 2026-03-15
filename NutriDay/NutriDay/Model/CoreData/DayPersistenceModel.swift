@@ -3,7 +3,7 @@
 //  Gère toutes les opérations Core Data pour les meals et goals
 
 import Foundation
-import CoreData
+ import CoreData
 
 /// Service de persistance pour les repas et objectifs quotidiens.
 class DayPersistenceModel {
