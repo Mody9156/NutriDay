@@ -19,7 +19,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Date navigation
-                    DateNavigationView(vm: vm)
+                    DateNavigationView(dayViewModel: vm)
 
                     // Calories card
                     CalorieCardView(vm: vm)
@@ -76,25 +76,25 @@ struct HomeView: View {
 
 // MARK: - Date Navigation
 struct DateNavigationView: View {
-    var vm: DayViewModel
+    var dayViewModel: DayViewModel
 
     var isToday: Bool {
-        Calendar.current.isDateInToday(vm.selectedDate)
+        Calendar.current.isDateInToday(dayViewModel.selectedDate)
     }
 
     var formattedDate: String {
-        if Calendar.current.isDateInToday(vm.selectedDate) { return "Aujourd'hui" }
-        if Calendar.current.isDateInYesterday(vm.selectedDate) { return "Hier" }
+        if Calendar.current.isDateInToday(dayViewModel.selectedDate) { return "Aujourd'hui" }
+        if Calendar.current.isDateInYesterday(dayViewModel.selectedDate) { return "Hier" }
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE d MMM"
         formatter.locale = Locale(identifier: "fr_FR")
-        return formatter.string(from: vm.selectedDate)
+        return formatter.string(from: dayViewModel.selectedDate)
     }
 
     var body: some View {
         HStack {
             Button {
-                vm.changeDay(by: -1)
+                dayViewModel.changeDay(by: -1)
             } label: {
                 Image(systemName: "chevron.left")
                     .fontWeight(.semibold)
@@ -110,7 +110,7 @@ struct DateNavigationView: View {
             Spacer()
 
             Button {
-                vm.changeDay(by: 1)
+                dayViewModel.changeDay(by: 1)
             } label: {
                 Image(systemName: "chevron.right")
                     .fontWeight(.semibold)
