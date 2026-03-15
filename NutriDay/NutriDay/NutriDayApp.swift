@@ -20,7 +20,7 @@ struct NutriDayApp: App {
                 )
             )
             TabView {
-                HomeView(vm: vm)
+                HomeView(dayViewModel: vm)
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Accueil")

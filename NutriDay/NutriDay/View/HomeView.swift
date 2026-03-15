@@ -10,7 +10,7 @@ import CoreData
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var context
-     var vm: DayViewModel
+     var dayViewModel: DayViewModel
     @State private var showAddMeal = false
     @State private var showSettings = false
 
@@ -19,16 +19,16 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Date navigation
-                    DateNavigationView(dayViewModel: vm)
+                    DateNavigationView(dayViewModel: dayViewModel)
 
                     // Calories card
-                    CalorieCardView(vm: vm)
+                    CalorieCardView(vm: dayViewModel)
 
                     // Streak
-                    StreakView(streak: vm.streak)
+                    StreakView(streak: dayViewModel.streak)
 
                     // Meals list
-                    MealsListView(vm: vm)
+                    MealsListView(vm: dayViewModel)
                 }
                 .padding()
             }
@@ -36,7 +36,7 @@ struct HomeView: View {
             .navigationTitle("Calo")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    NavigationLink(destination: StatsView(vm: vm)) {
+                    NavigationLink(destination: StatsView(vm: dayViewModel)) {
                         Image(systemName: "chart.bar.fill")
                     }
                 }
@@ -65,10 +65,10 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showAddMeal) {
-                AddMealView(vm: vm)
+                AddMealView(vm: dayViewModel)
             }
             .sheet(isPresented: $showSettings) {
-                SettingsView(vm: vm)
+                SettingsView(vm: dayViewModel)
             }
         }
     }
@@ -270,7 +270,7 @@ struct MealsListView: View {
 }
 #Preview {
     HomeView(
-vm: DayViewModel(
+dayViewModel: DayViewModel(
     persistence: DayPersistenceModel(
         context: PersistenceController.shared.container
             .viewContext)))
