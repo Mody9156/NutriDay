@@ -10,23 +10,23 @@ import CoreData
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var context
-     var dayViewModel: DayViewModel
+    var dayViewModel: DayViewModel
     @State private var showAddMeal = false
     @State private var showSettings = false
-
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
                     // Date navigation
                     DateNavigationView(dayViewModel: dayViewModel)
-
+                    
                     // Calories card
                     CalorieCardView(vm: dayViewModel)
-
+                    
                     // Streak
                     StreakView(streak: dayViewModel.streak)
-
+                    
                     // Meals list
                     MealsListView(vm: dayViewModel)
                 }
@@ -77,11 +77,11 @@ struct HomeView: View {
 // MARK: - Date Navigation
 struct DateNavigationView: View {
     var dayViewModel: DayViewModel
-
+    
     var isToday: Bool {
         Calendar.current.isDateInToday(dayViewModel.selectedDate)
     }
-
+    
     var formattedDate: String {
         if Calendar.current.isDateInToday(dayViewModel.selectedDate) { return "Aujourd'hui" }
         if Calendar.current.isDateInYesterday(dayViewModel.selectedDate) { return "Hier" }
@@ -90,7 +90,7 @@ struct DateNavigationView: View {
         formatter.locale = Locale(identifier: "fr_FR")
         return formatter.string(from: dayViewModel.selectedDate)
     }
-
+    
     var body: some View {
         HStack {
             Button {
@@ -100,15 +100,15 @@ struct DateNavigationView: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(.green)
             }
-
+            
             Spacer()
-
+            
             Text(formattedDate)
                 .font(.headline)
                 .fontWeight(.semibold)
-
+            
             Spacer()
-
+            
             Button {
                 dayViewModel.changeDay(by: 1)
             } label: {
@@ -124,14 +124,14 @@ struct DateNavigationView: View {
 
 // MARK: - Calorie Card
 struct CalorieCardView: View {
-     var vm: DayViewModel
-
+    var vm: DayViewModel
+    
     var statusColor: Color {
         if vm.progress < 0.75 { return .green }
         if vm.progress < 1.0 { return .orange }
         return .red
     }
-
+    
     var body: some View {
         VStack(spacing: 16) {
             HStack(alignment: .bottom) {
@@ -159,7 +159,7 @@ struct CalorieCardView: View {
                         .foregroundStyle(statusColor)
                 }
             }
-
+            
             // Progress bar
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
@@ -184,7 +184,7 @@ struct CalorieCardView: View {
 // MARK: - Streak
 struct StreakView: View {
     let streak: Int
-
+    
     var body: some View {
         HStack(spacing: 12) {
             Text(streak > 0 ? "🔥" : "💤")
@@ -208,14 +208,14 @@ struct StreakView: View {
 
 // MARK: - Meals List
 struct MealsListView: View {
-     var vm: DayViewModel
-
+    var vm: DayViewModel
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Repas")
                 .font(.headline)
                 .padding(.horizontal, 4)
-
+            
             if vm.meals.isEmpty {
                 VStack(spacing: 8) {
                     Image(systemName: "fork.knife")
@@ -243,8 +243,8 @@ struct MealsListView: View {
                                         time: .shortened
                                     )
                             )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                         }
                         Spacer()
                         Text("\(Int(meal.calories)) kcal")
@@ -270,9 +270,9 @@ struct MealsListView: View {
 }
 #Preview {
     HomeView(
-dayViewModel: DayViewModel(
-    persistence: DayPersistenceModel(
-        context: PersistenceController.shared.container
-            .viewContext)))
+        dayViewModel: DayViewModel(
+            persistence: DayPersistenceModel(
+                context: PersistenceController.shared.container
+                    .viewContext)))
     
 }
