@@ -54,5 +54,6 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(vm: DayViewModel(persistence: DayPersistenceModel(context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))))
+    SettingsView(vm: DayViewModel(persistence: DayPersistenceModel(context:PersistenceController.shared.container
+        .viewContext)))
 }

@@ -269,7 +269,10 @@ struct MealsListView: View {
     }
 }
 #Preview {
-    HomeView(vm: DayViewModel(
-        persistence: DayPersistenceModel(context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)))
-    )
+    HomeView(
+vm: DayViewModel(
+    persistence: DayPersistenceModel(
+        context: PersistenceController.shared.container
+            .viewContext)))
+    
 }

@@ -88,6 +88,7 @@ struct StatsView: View {
 }
 #Preview {
     StatsView(vm: DayViewModel(
-        persistence: DayPersistenceModel(context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)))
+        persistence: DayPersistenceModel(context: PersistenceController.shared.container
+            .viewContext))
     )
 }
