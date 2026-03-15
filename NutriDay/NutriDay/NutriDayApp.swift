@@ -17,10 +17,11 @@ struct NutriDayApp: App {
             HomeView(
                 vm: DayViewModel(
                     persistence: DayPersistenceModel(
-                        context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+                        context: persistenceController.container.viewContext
                     )
+                )
             )
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

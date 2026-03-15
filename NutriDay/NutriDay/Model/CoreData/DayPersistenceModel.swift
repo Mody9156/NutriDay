@@ -47,7 +47,6 @@ class DayPersistenceModel {
             saveContext()
         }
     }
-
     // MARK: - Goal
     func fetchGoal() -> DailyGoalModel? {
         let request: NSFetchRequest<DailyGoal> = DailyGoal.fetchRequest()
