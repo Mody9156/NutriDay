@@ -46,5 +46,7 @@ struct AddMealView: View {
     }
 }
 #Preview {
-    AddMealView(vm: DayViewModel(persistence: DayPersistenceModel(context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))))
+    AddMealView(vm: DayViewModel(persistence: DayPersistenceModel(
+        context: PersistenceController.shared.container
+            .viewContext)))
 }

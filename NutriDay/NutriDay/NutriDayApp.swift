@@ -14,13 +14,23 @@ struct NutriDayApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView(
-                vm: DayViewModel(
-                    persistence: DayPersistenceModel(
-                        context: persistenceController.container.viewContext
-                    )
+            let vm = DayViewModel(
+                persistence: DayPersistenceModel(
+                    context: persistenceController.container.viewContext
                 )
             )
+            TabView {
+                HomeView(vm: vm)
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Accueil")
+                    }
+                StatsView(vm: vm)
+                    .tabItem {
+                        Image(systemName: "chart.bar.fill")
+                        Text("Statistiques")
+                    }
+            }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
