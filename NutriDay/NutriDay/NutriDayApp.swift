@@ -25,11 +25,6 @@ struct NutriDayApp: App {
                         Image(systemName: "house.fill")
                         Text("Accueil")
                     }
-                StatsView(vm: vm)
-                    .tabItem {
-                        Image(systemName: "chart.bar.fill")
-                        Text("Statistiques")
-                    }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
