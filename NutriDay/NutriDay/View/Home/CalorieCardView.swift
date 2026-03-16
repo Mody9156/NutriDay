@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
- import CoreData
+import CoreData
 
 // MARK: - Calorie Card
 struct CalorieCardView: View {
-    var vm: DayViewModel
+    var dayViewModel: DayViewModel
     
     var statusColor: Color {
-        if vm.progress < 0.75 { return .green }
-        if vm.progress < 1.0 { return .orange }
+        if dayViewModel.progress < 0.75 { return .green }
+        if dayViewModel.progress < 1.0 { return .orange }
         return .red
     }
     
@@ -26,10 +26,10 @@ struct CalorieCardView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     HStack(alignment: .lastTextBaseline, spacing: 4) {
-                        Text("\(Int(vm.totalCalories))")
+                        Text("\(Int(dayViewModel.totalCalories))")
                             .font(.system(size: 48, weight: .bold, design: .rounded))
                             .foregroundStyle(statusColor)
-                        Text("/ \(Int(vm.targetCalories)) kcal")
+                        Text("/ \(Int(dayViewModel.targetCalories)) kcal")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -39,7 +39,7 @@ struct CalorieCardView: View {
                     Text("Restant")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                    Text("\(Int(max(vm.targetCalories - vm.totalCalories, 0))) kcal")
+                    Text("\(Int(max(dayViewModel.targetCalories - dayViewModel.totalCalories, 0))) kcal")
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundStyle(statusColor)
@@ -54,8 +54,8 @@ struct CalorieCardView: View {
                         .frame(height: 12)
                     RoundedRectangle(cornerRadius: 8)
                         .fill(statusColor)
-                        .frame(width: geo.size.width * vm.progress, height: 12)
-                        .animation(.spring(), value: vm.progress)
+                        .frame(width: geo.size.width * dayViewModel.progress, height: 12)
+                        .animation(.spring(), value: dayViewModel.progress)
                 }
             }
             .frame(height: 12)
@@ -70,7 +70,7 @@ struct CalorieCardView: View {
 
 #Preview {
     CalorieCardView(
-        vm: DayViewModel(
+        dayViewModel: DayViewModel(
             persistence: DayPersistenceModel(
                 context: PersistenceController.shared
                     .container.viewContext)

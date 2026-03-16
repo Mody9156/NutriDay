@@ -64,7 +64,7 @@ struct HomeView: View {
                         Image(systemName: "gearshape.fill")
                     }
                 }
-               
+                
             }
             .sheet(isPresented: $showAddMeal) {
                 AddMealView(dayViewModelm: dayViewModel)
@@ -102,7 +102,6 @@ struct StreakView: View {
         .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
     }
 }
-
 
 #Preview {
     HomeView(

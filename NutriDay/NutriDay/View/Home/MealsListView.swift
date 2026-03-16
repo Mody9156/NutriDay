@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Meals List
 struct MealsListView: View {
-    var vm: DayViewModel
+    var dayViewModel: DayViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
