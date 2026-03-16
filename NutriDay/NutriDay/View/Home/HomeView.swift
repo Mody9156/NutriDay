@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct HomeView: View {
     var dayViewModel: DayViewModel
@@ -75,8 +74,6 @@ struct HomeView: View {
     }
 }
 
-
-
 // MARK: - Streak
 struct StreakView: View {
     let streak: Int
@@ -103,10 +100,6 @@ struct StreakView: View {
 }
 
 #Preview {
-    HomeView(
-        dayViewModel: DayViewModel(
-            persistence: DayPersistenceModel(
-                context: PersistenceController.shared.container
-                    .viewContext)))
+    HomeView()
     
 }

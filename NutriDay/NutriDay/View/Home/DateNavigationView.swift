@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 // MARK: - Date Navigation
 struct DateNavigationView: View {
@@ -57,11 +56,5 @@ struct DateNavigationView: View {
 }
 
 #Preview {
-    DateNavigationView(
-        dayViewModel: DayViewModel(
-            persistence: DayPersistenceModel(
-                context: PersistenceController.shared
-                    .container.viewContext)
-        )
-    )
+    DateNavigationView()
 }

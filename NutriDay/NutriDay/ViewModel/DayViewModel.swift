@@ -6,17 +6,19 @@
 import Foundation
 import Observation
 import SwiftUI
+internal import CoreData
 
 @Observable
 class DayViewModel {
-    let persistence: DayPersistenceModel
+    var persistence: DayPersistenceModel
 
     var meals: [MealModel] = []
     var targetCalories: Double = 2000
     var selectedDate: Date = Date()
     var streak: Int = 0
 
-    init(persistence: DayPersistenceModel) {
+    init(persistence: DayPersistenceModel = DayPersistenceModel(context: PersistenceController.shared.container
+        .viewContext)) {
         self.persistence = persistence
         loadGoal()
         fetchMeals()

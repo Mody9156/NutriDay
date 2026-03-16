@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 // MARK: - Meals List
 struct MealsListView: View {
@@ -70,12 +69,7 @@ struct MealsListView: View {
         }
     }
 }
+
 #Preview {
-    MealsListView(
-        dayViewModel: DayViewModel(
-            persistence: DayPersistenceModel(
-                context: PersistenceController.shared
-                    .container.viewContext)
-        )
-    )
+    MealsListView()
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct AddMealView: View {
     var addMealViewModel = AddMealViewModel(
@@ -17,11 +16,11 @@ struct AddMealView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var calories = ""
-
+    
     var isValid: Bool {
         !name.isEmpty && Double(calories) != nil
     }
-
+    
     var body: some View {
         NavigationStack {
             Form {

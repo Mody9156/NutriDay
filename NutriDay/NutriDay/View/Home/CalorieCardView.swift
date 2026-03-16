@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 // MARK: - Calorie Card
 struct CalorieCardView: View {
@@ -69,11 +68,5 @@ struct CalorieCardView: View {
 
 
 #Preview {
-    CalorieCardView(
-        dayViewModel: DayViewModel(
-            persistence: DayPersistenceModel(
-                context: PersistenceController.shared
-                    .container.viewContext)
-        )
-    )
+    CalorieCardView()
 }
