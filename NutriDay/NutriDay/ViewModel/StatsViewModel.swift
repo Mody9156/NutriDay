@@ -4,7 +4,7 @@
 
 import Foundation
 import Observation
-import CoreData
+internal import CoreData
 
 @Observable
 class StatsViewModel {

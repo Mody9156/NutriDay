@@ -5,7 +5,7 @@
 //  Created by Modibo on 13/03/2026.
 //
 
-import CoreData
+internal import CoreData
 import CoreTransferable
 
 struct PersistenceController {

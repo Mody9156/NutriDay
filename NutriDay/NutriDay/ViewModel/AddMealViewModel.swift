@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+internal import CoreData
 
 @Observable
 class AddMealViewModel {
@@ -16,7 +17,12 @@ class AddMealViewModel {
     var streak: Int = 0
 
     // MARK: - Init
-    init(persistence: DayPersistenceModel, selectedDate: Date = Date()) {
+    init(
+        persistence: DayPersistenceModel = DayPersistenceModel(
+            context: PersistenceController
+                .shared.container.viewContext),
+        selectedDate: Date = Date()
+    ) {
         self.persistence = persistence
         self.selectedDate = selectedDate
         // Preload current state

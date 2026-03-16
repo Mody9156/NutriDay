@@ -53,5 +53,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(settingsViewModel: SettingsViewModel(persistence: DayPersistenceModel(context: PersistenceController.shared.container.viewContext)))
+    SettingsView(settingsViewModel: SettingsViewModel())
 }

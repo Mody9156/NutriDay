@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Date Navigation
 struct DateNavigationView: View {
-    var dayViewModel: DayViewModel
+    var dayViewModel = DayViewModel()
     
     var isToday: Bool {
         Calendar.current.isDateInToday(dayViewModel.selectedDate)

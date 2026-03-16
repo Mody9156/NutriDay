@@ -27,11 +27,11 @@ struct StatsView: View {
                                 y: .value("Calories", item.calories)
                             )
                             .foregroundStyle(
-                                item.calories <= vm.targetCalories ? Color.green : Color.red
+                                item.calories <= statsViewModel.targetCalories ? Color.green : Color.red
                             )
                             .cornerRadius(6)
                         }
-                        RuleMark(y: .value("Objectif", vm.targetCalories))
+                        RuleMark(y: .value("Objectif", statsViewModel.targetCalories))
                             .foregroundStyle(.orange)
                             .lineStyle(StrokeStyle(lineWidth: 1.5, dash: [5]))
                             .annotation(position: .top, alignment: .trailing) {
@@ -56,7 +56,7 @@ struct StatsView: View {
                 VStack(spacing: 8) {
                     Text("🔥")
                         .font(.system(size: 48))
-                    Text("\(vm.streak())")
+                    Text("\(statsViewModel.streak())")
                         .font(.system(size: 56, weight: .bold, design: .rounded))
                         .foregroundStyle(.orange)
                     Text("Jours consécutifs dans l'objectif")
@@ -78,7 +78,7 @@ struct StatsView: View {
     }
     
     func loadWeekData() {
-        weekData = vm.weekData()
+        weekData = statsViewModel.weekData()
     }
 }
 #Preview {

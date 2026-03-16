@@ -5,6 +5,7 @@
 
 import Foundation
 import Observation
+internal import CoreData
 
 @Observable
 class HomeViewModel {
@@ -14,7 +15,11 @@ class HomeViewModel {
     var selectedDate: Date = Date()
     var streak: Int = 0
 
-    init(persistence: DayPersistenceModel) {
+    init(
+        persistence: DayPersistenceModel = DayPersistenceModel(
+            context: PersistenceController
+                .shared.container.viewContext)
+    ) {
         self.persistence = persistence
         fetchMeals()
         calculateStreak()

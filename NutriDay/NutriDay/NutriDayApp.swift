@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CoreData
+internal import CoreData
 
 @main
 struct NutriDayApp: App {
@@ -26,3 +26,4 @@ struct NutriDayApp: App {
         }
     }
 }
+
