@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 // MARK: - Meals List
 struct MealsListView: View {
@@ -17,7 +18,7 @@ struct MealsListView: View {
                 .font(.headline)
                 .padding(.horizontal, 4)
             
-            if vm.meals.isEmpty {
+            if dayViewModel.meals.isEmpty {
                 VStack(spacing: 8) {
                     Image(systemName: "fork.knife")
                         .font(.largeTitle)
@@ -31,7 +32,7 @@ struct MealsListView: View {
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
             } else {
-                ForEach(vm.meals) { meal in
+                ForEach(dayViewModel.meals) { meal in
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(meal.name)
@@ -59,7 +60,7 @@ struct MealsListView: View {
                     .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 1)
                     .swipeActions {
                         Button(role: .destructive) {
-                            vm.deleteMeal(meal)
+                            dayViewModel.deleteMeal(meal)
                         } label: {
                             Label("Supprimer", systemImage: "trash")
                         }
@@ -70,5 +71,11 @@ struct MealsListView: View {
     }
 }
 #Preview {
-    MealsListView()
+    MealsListView(
+        dayViewModel: DayViewModel(
+            persistence: DayPersistenceModel(
+                context: PersistenceController.shared
+                    .container.viewContext)
+        )
+    )
 }
