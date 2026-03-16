@@ -14,6 +14,15 @@ class AddMealViewModel {
     var selectedDate: Date = Date()
     var meals: [MealModel] = []
     var streak: Int = 0
+
+    // MARK: - Init
+    init(persistence: DayPersistenceModel, selectedDate: Date = Date()) {
+        self.persistence = persistence
+        self.selectedDate = selectedDate
+        // Preload current state
+        fetchMeals()
+        calculateStreak()
+    }
     
     // MARK: - Meals
     func fetchMeals() {
@@ -48,3 +57,4 @@ class AddMealViewModel {
         calculateStreak()
     }
 }
+

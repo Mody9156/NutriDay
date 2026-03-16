@@ -9,7 +9,11 @@ import SwiftUI
 import CoreData
 
 struct AddMealView: View {
-     var dayViewModelm: HomeViewModel
+    var addMealViewModel = AddMealViewModel(
+        persistence: DayPersistenceModel(
+            context: PersistenceController.shared.container.viewContext
+        )
+    )
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var calories = ""
@@ -35,7 +39,7 @@ struct AddMealView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Ajouter") {
-                        dayViewModelm.addMeal(name: name, calories: Double(calories) ?? 0)
+                        addMealViewModel.addMeal(name: name, calories: Double(calories) ?? 0)
                         dismiss()
                     }
                     .fontWeight(.semibold)
@@ -46,7 +50,5 @@ struct AddMealView: View {
     }
 }
 #Preview {
-    AddMealView(dayViewModelm: HomeViewModel(persistence: DayPersistenceModel(
-        context: PersistenceController.shared.container
-            .viewContext)))
+    AddMealView()
 }

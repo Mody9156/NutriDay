@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct SettingsView: View {
-    var vm: SettingsViewModel
+    var settingsViewModel = SettingsViewModel(persistence: DayPersistenceModel(context: PersistenceController.shared.container.viewContext))
     @Environment(\.dismiss) private var dismiss
     @State private var target = ""
 
@@ -25,7 +25,7 @@ struct SettingsView: View {
                     }
                 }
                 Section {
-                    Text("Objectif actuel : \(Int(vm.targetCalories)) kcal")
+                    Text("Objectif actuel : \(Int(settingsViewModel.targetCalories)) kcal")
                         .foregroundStyle(.secondary)
                 }
             }
@@ -38,7 +38,7 @@ struct SettingsView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Enregistrer") {
                         if let value = Double(target) {
-                            vm.saveGoal(value)
+                            settingsViewModel.saveGoal(value)
                         }
                         dismiss()
                     }
@@ -47,12 +47,12 @@ struct SettingsView: View {
                 }
             }
             .onAppear {
-                target = "\(Int(vm.targetCalories))"
+                target = "\(Int(settingsViewModel.targetCalories))"
             }
         }
     }
 }
 
 #Preview {
-    SettingsView(vm: SettingsViewModel(persistence: DayPersistenceModel(context: PersistenceController.shared.container.viewContext)))
+    SettingsView(settingsViewModel: SettingsViewModel(persistence: DayPersistenceModel(context: PersistenceController.shared.container.viewContext)))
 }

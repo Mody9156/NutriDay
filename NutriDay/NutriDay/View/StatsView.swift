@@ -10,7 +10,11 @@ import Charts
 import CoreData
 
 struct StatsView: View {
-    var vm: StatsViewModel
+    var statsViewModel = StatsViewModel(
+        persistence: DayPersistenceModel(
+            context: PersistenceController.shared.container
+                .viewContext)
+    )
     @State private var weekData: [(date: Date, calories: Double)] = []
     
     var body: some View {
@@ -83,9 +87,6 @@ struct StatsView: View {
     }
 }
 #Preview {
-    StatsView(vm: StatsViewModel(
-        persistence: DayPersistenceModel(context: PersistenceController.shared.container
-            .viewContext))
-    )
+    StatsView()
 }
 

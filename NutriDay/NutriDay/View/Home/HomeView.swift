@@ -22,13 +22,13 @@ struct HomeView: View {
                     DateNavigationView(dayViewModel: dayViewModel)
                     
                     // Calories card
-                    CalorieCardView(vm: dayViewModel)
+                    CalorieCardView(dayViewModel: dayViewModel)
                     
                     // Streak
                     StreakView(streak: dayViewModel.streak)
                     
                     // Meals list
-                    MealsListView(vm: dayViewModel)
+                    MealsListView(dayViewModel: dayViewModel)
                     
                     Spacer()
                     
@@ -53,7 +53,7 @@ struct HomeView: View {
             .navigationTitle("Calo")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    NavigationLink(destination: StatsView(vm: dayViewModel)) {
+                    NavigationLink(destination: StatsView()) {
                         Image(systemName: "chart.bar.fill")
                     }
                 }
@@ -67,10 +67,10 @@ struct HomeView: View {
                 
             }
             .sheet(isPresented: $showAddMeal) {
-                AddMealView(dayViewModelm: dayViewModel)
+                AddMealView()
             }
             .sheet(isPresented: $showSettings) {
-                SettingsView(vm: dayViewModel)
+                SettingsView()
             }
         }
     }
