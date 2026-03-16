@@ -14,11 +14,7 @@ struct NutriDayApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let dayViewModel = DayViewModel(
-                persistence: DayPersistenceModel(
-                    context: persistenceController.container.viewContext
-                )
-            )
+            let dayViewModel = DayViewModel()
             TabView {
                 HomeView(dayViewModel: dayViewModel)
                     .tabItem {

@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct SettingsView: View {
-    var settingsViewModel = SettingsViewModel(persistence: DayPersistenceModel(context: PersistenceController.shared.container.viewContext))
+    var settingsViewModel = SettingsViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var target = ""
 

@@ -7,14 +7,9 @@
 
 import SwiftUI
 import Charts
-import CoreData
 
 struct StatsView: View {
-    var statsViewModel = StatsViewModel(
-        persistence: DayPersistenceModel(
-            context: PersistenceController.shared.container
-                .viewContext)
-    )
+    var statsViewModel = StatsViewModel()
     @State private var weekData: [(date: Date, calories: Double)] = []
     
     var body: some View {

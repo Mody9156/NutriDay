@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct AddMealView: View {
-    var addMealViewModel = AddMealViewModel(
-        persistence: DayPersistenceModel(
-            context: PersistenceController.shared.container.viewContext
-        )
-    )
+    var addMealViewModel = AddMealViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var calories = ""

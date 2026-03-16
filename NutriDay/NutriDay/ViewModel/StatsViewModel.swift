@@ -4,6 +4,7 @@
 
 import Foundation
 import Observation
+import CoreData
 
 @Observable
 class StatsViewModel {
@@ -11,7 +12,11 @@ class StatsViewModel {
 
     let targetCalories: Double
     
-    init(persistence: DayPersistenceModel) {
+    init(
+        persistence: DayPersistenceModel = DayPersistenceModel(
+            context: PersistenceController
+                .shared.container.viewContext)
+    ) {
         self.persistence = persistence
         self.targetCalories = persistence.fetchGoal()?.targetCalories ?? 2000
     }
