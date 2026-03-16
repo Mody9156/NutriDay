@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct AddMealView: View {
-     var dayViewModelm: DayViewModel
+     var dayViewModelm: HomeViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var calories = ""
@@ -46,7 +46,7 @@ struct AddMealView: View {
     }
 }
 #Preview {
-    AddMealView(dayViewModelm: DayViewModel(persistence: DayPersistenceModel(
+    AddMealView(dayViewModelm: HomeViewModel(persistence: DayPersistenceModel(
         context: PersistenceController.shared.container
             .viewContext)))
 }

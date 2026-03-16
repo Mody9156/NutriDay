@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct SettingsView: View {
-    var vm: DayViewModel
+    var vm: SettingsViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var target = ""
 
@@ -54,6 +54,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(vm: DayViewModel(persistence: DayPersistenceModel(context:PersistenceController.shared.container
-        .viewContext)))
+    SettingsView(vm: SettingsViewModel(persistence: DayPersistenceModel(context: PersistenceController.shared.container.viewContext)))
 }

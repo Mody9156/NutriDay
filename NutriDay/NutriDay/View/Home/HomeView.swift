@@ -29,6 +29,23 @@ struct HomeView: View {
                     
                     // Meals list
                     MealsListView(vm: dayViewModel)
+                    
+                    Spacer()
+                    
+                    Button {
+                        showAddMeal = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                            Text("Ajouter un repas")
+                        }
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 12)
+                        .background(Color.green)
+                        .clipShape(Capsule())
+                    }
                 }
                 .padding()
             }
@@ -47,22 +64,7 @@ struct HomeView: View {
                         Image(systemName: "gearshape.fill")
                     }
                 }
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        showAddMeal = true
-                    } label: {
-                        HStack {
-                            Image(systemName: "plus.circle.fill")
-                            Text("Ajouter un repas")
-                        }
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 12)
-                        .background(Color.green)
-                        .clipShape(Capsule())
-                    }
-                }
+               
             }
             .sheet(isPresented: $showAddMeal) {
                 AddMealView(dayViewModelm: dayViewModel)

@@ -10,7 +10,7 @@ import Charts
 import CoreData
 
 struct StatsView: View {
-    var vm: DayViewModel
+    var vm: StatsViewModel
     @State private var weekData: [(date: Date, calories: Double)] = []
     
     var body: some View {
@@ -57,7 +57,7 @@ struct StatsView: View {
                 VStack(spacing: 8) {
                     Text("🔥")
                         .font(.system(size: 48))
-                    Text("\(vm.streak)")
+                    Text("\(vm.streak())")
                         .font(.system(size: 56, weight: .bold, design: .rounded))
                         .foregroundStyle(.orange)
                     Text("Jours consécutifs dans l'objectif")
@@ -79,16 +79,13 @@ struct StatsView: View {
     }
     
     func loadWeekData() {
-        weekData = (0..<7).reversed().map { offset in
-            let date = Calendar.current.date(byAdding: .day, value: -offset, to: Date())!
-            let meals = vm.fetchMealsPublic(for: date)
-            return (date: date, calories: meals.reduce(0) { $0 + $1.calories })
-        }
+        weekData = vm.weekData()
     }
 }
 #Preview {
-    StatsView(vm: DayViewModel(
+    StatsView(vm: StatsViewModel(
         persistence: DayPersistenceModel(context: PersistenceController.shared.container
             .viewContext))
     )
 }
+
