@@ -1,6 +1,8 @@
 # 🥗 NutriDay — Calorie Tracker
 
-> Application iOS de suivi calorique quotidien, développée en SwiftUI.
+> A daily calorie tracking iOS app built with SwiftUI.
+
+> ⚠️ **Demo Project** — NutriDay is a concept app exploring ideas for improving calorie management. It is not a final product, but a demonstration of potential features and technical implementation.
 
 [![Swift](https://img.shields.io/badge/Swift-5.9-orange?logo=swift&logoColor=white)](https://swift.org)
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-5-blue)](https://developer.apple.com/xcode/swiftui/)
@@ -8,71 +10,56 @@
 
 ---
 
-## 📱 Fonctionnalités
+## 📱 Features
 
-- 🍽 Ajout de repas avec nom et calories
-- 📊 Barre de progression journalière vs objectif
-- 🔥 Streak de jours dans l'objectif
-- 📅 Historique de navigation par jour
-- 📈 Graphique des 7 derniers jours (Swift Charts)
-- ⚙️ Objectif calorique configurable
+- 🍽 Add meals with name and calories
+- 📊 Daily progress bar vs. goal
+- 🔥 Streak of days within goal
+- 📅 Day-by-day history navigation
+- 📈 7-day progress chart (Swift Charts)
+- ⚙️ Configurable daily calorie goal
 
 ---
 
-## 🛠 Stack technique
+## 🛠 Tech Stack
 
-| Catégorie | Technologies |
+| Category | Technologies |
 |---|---|
-| Langage | Swift 5.9 |
+| Language | Swift 5.9 |
 | UI | SwiftUI |
 | Architecture | MVVM |
-| Persistance | Core Data |
-| Graphiques | Swift Charts |
+| Persistence | Core Data |
+| Charts | Swift Charts |
 
 ---
 
 ## 🏗 Architecture
+
 ```
 NutriDay/
 ├── App/
-│   └── NutriDayApp.swift
 ├── Models/
-│   └── NutriDay.xcdatamodeld
 ├── ViewModels/
-│   └── DayViewModel.swift
-├── Persistence/
-│   ├── PersistenceController.swift
-│   └── DayPersistenceModel.swift
 └── Views/
-    ├── Home/
-    │   ├── HomeView.swift
-    │   ├── CalorieCardView.swift
-    │   ├── StreakView.swift
-    │   └── MealsListView.swift
-    ├── Meal/
-    │   └── AddMealView.swift
-    ├── Stats/
-    │   └── StatsView.swift
-    └── Settings/
-        └── SettingsView.swift
 ```
 
 ---
 
-## 🚀 Installation
+## 🚀 Getting Started
+
 ```bash
 git clone https://github.com/Mody9156/NutriDay.git
 cd NutriDay
 open NutriDay.xcodeproj
 ```
 
-Lancez avec `⌘R` sur un simulateur iOS 16+.
+Run with `⌘R` on an iOS 16+ simulator.
 
-> Aucune dépendance externe requise.
+> No external dependencies required.
 
 ---
 
-## 👤 Auteur
+## 👤 Author
 
-**Modibo Keïta** — Développeur iOS  
+**Modibo Keïta** — iOS Developer  
 [GitHub](https://github.com/Mody9156) · [LinkedIn](https://www.linkedin.com/in/modibo-keita-337746278)
