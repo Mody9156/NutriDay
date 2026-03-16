@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-    @Environment(\.managedObjectContext) private var context
     var dayViewModel: DayViewModel
     @State private var showAddMeal = false
     @State private var showSettings = false
