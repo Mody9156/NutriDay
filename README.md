@@ -34,7 +34,6 @@
 ---
 
 ## 🏗 Architecture
-
 ```
 NutriDay/
 ├── App/
@@ -46,7 +45,6 @@ NutriDay/
 ---
 
 ## 🚀 Getting Started
-
 ```bash
 git clone https://github.com/Mody9156/NutriDay.git
 cd NutriDay
@@ -62,4 +60,4 @@ Run with `⌘R` on an iOS 16+ simulator.
 ## 👤 Author
 
 **Modibo Keïta** — iOS Developer  
-[GitHub](https://github.com/Mody9156) · [LinkedIn](https://www.linkedin.com/in/modibo-keita-337746278)
+[GitHub](https://github.com/Mody9156) · [LinkedIn](https://www.linkedin.com/in/modibo-keita-337746278) · [📄 Brochure](https://www.notion.so/NutriDay-Calorie-Tracker-Brochure-ff28a0e9d38e48d887ee587f0f5d9401))
