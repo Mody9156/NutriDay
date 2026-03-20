@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct StatsView: View {
-    var statsViewModel = StatsViewModel()
+    var dayViewModel = DayViewModel()
     @State private var weekData: [(date: Date, calories: Double)] = []
     
     var body: some View {
@@ -27,11 +27,11 @@ struct StatsView: View {
                                 y: .value("Calories", item.calories)
                             )
                             .foregroundStyle(
-                                item.calories <= statsViewModel.targetCalories ? Color.green : Color.red
+                                item.calories <= dayViewModel.targetCalories ? Color.green : Color.red
                             )
                             .cornerRadius(6)
                         }
-                        RuleMark(y: .value("Objectif", statsViewModel.targetCalories))
+                        RuleMark(y: .value("Objectif", dayViewModel.targetCalories))
                             .foregroundStyle(.orange)
                             .lineStyle(StrokeStyle(lineWidth: 1.5, dash: [5]))
                             .annotation(position: .top, alignment: .trailing) {
@@ -56,7 +56,7 @@ struct StatsView: View {
                 VStack(spacing: 8) {
                     Text("🔥")
                         .font(.system(size: 48))
-                    Text("\(statsViewModel.streak())")
+                    Text("\(dayViewModel.currentStreak())")
                         .font(.system(size: 56, weight: .bold, design: .rounded))
                         .foregroundStyle(.orange)
                     Text("Jours consécutifs dans l'objectif")
@@ -78,7 +78,7 @@ struct StatsView: View {
     }
     
     func loadWeekData() {
-        weekData = statsViewModel.weekData()
+        weekData = dayViewModel.weekData()
     }
 }
 #Preview {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddMealView: View {
-    var addMealViewModel = AddMealViewModel()
+    var dayViewModel = DayViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var calories = ""
@@ -34,7 +34,7 @@ struct AddMealView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Ajouter") {
-                        addMealViewModel.addMeal(name: name, calories: Double(calories) ?? 0)
+                        dayViewModel.addMeal(name: name, calories: Double(calories) ?? 0)
                         dismiss()
                     }
                     .fontWeight(.semibold)

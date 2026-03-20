@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    var settingsViewModel = SettingsViewModel()
+    @State var dayViewModel = DayViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var target = ""
 
@@ -24,7 +24,7 @@ struct SettingsView: View {
                     }
                 }
                 Section {
-                    Text("Objectif actuel : \(Int(settingsViewModel.targetCalories)) kcal")
+                    Text("Objectif actuel : \(Int(dayViewModel.targetCalories)) kcal")
                         .foregroundStyle(.secondary)
                 }
             }
@@ -37,7 +37,7 @@ struct SettingsView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Enregistrer") {
                         if let value = Double(target) {
-                            settingsViewModel.saveGoal(value)
+                            dayViewModel.saveGoal(value)
                         }
                         dismiss()
                     }
@@ -46,12 +46,12 @@ struct SettingsView: View {
                 }
             }
             .onAppear {
-                target = "\(Int(settingsViewModel.targetCalories))"
+                target = "\(Int(dayViewModel.targetCalories))"
             }
         }
     }
 }
 
 #Preview {
-    SettingsView(settingsViewModel: SettingsViewModel())
+    SettingsView()
 }
