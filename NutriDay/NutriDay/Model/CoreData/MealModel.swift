@@ -12,8 +12,3 @@ struct MealModel: Identifiable, Equatable {
     var date: Date
 }
 
-/// Modèle simple représentant l'objectif quotidien.
-struct DailyGoalModel: Identifiable, Equatable {
-    var id: UUID = UUID()
-    var targetCalories: Double
-}
