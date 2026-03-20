@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct StatsView: View {
-    var dayViewModel = DayViewModel()
+    @State var dayViewModel = DayViewModel()
     @State private var weekData: [(date: Date, calories: Double)] = []
     
     var body: some View {

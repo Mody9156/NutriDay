@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Calorie Card
 struct CalorieCardView: View {
-    var dayViewModel = DayViewModel()
+    @State var dayViewModel = DayViewModel()
     
     var statusColor: Color {
         if dayViewModel.progress < 0.75 { return .green }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddMealView: View {
-    var dayViewModel = DayViewModel()
+    @State var dayViewModel = DayViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var calories = ""

@@ -3,7 +3,7 @@
 //  Gère toutes les opérations Core Data pour les meals et goals
 
 import Foundation
-import CoreData
+internal import CoreData
 
 // MARK: - Erreurs de persistance
 

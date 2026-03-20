@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    var dayViewModel = DayViewModel()
+    @State var dayViewModel = DayViewModel()
     @State private var showAddMeal = false
     @State private var showSettings = false
     
