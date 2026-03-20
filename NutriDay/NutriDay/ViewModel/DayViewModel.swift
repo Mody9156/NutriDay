@@ -6,7 +6,7 @@
 import Foundation
 import Observation
 import SwiftUI
-internal import CoreData
+import CoreData
 
 @Observable
 class DayViewModel {
